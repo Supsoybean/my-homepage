@@ -28,7 +28,7 @@ const projects = ref([
   { 
     title: '个人主页', 
     description: '记录·思考·分享', 
-    link: '#', 
+    link: 'https://github.com/Supsoybean/my-homepage', 
     // 这个卡片使用 iconClass 属性，会显示单色的字体图标
     iconClass: 'icon-zhuye' 
   },

@@ -1,0 +1,89 @@
+/* src/assets/main.css */
+:root {
+  --card-bg-color: rgba(255, 255, 255, 0.15);
+  --card-border-color: rgba(255, 255, 255, 0.2);
+  
+  /* --- 如果用浅色背景，修改这里的文字颜色 --- */
+  /* 深色背景下的颜色 (默认) */
+  /* --text-color: #f0f0f0;
+  --text-color-light: #d1d1d1; */
+  
+  /* 浅色背景下的颜色 (示例) */
+  --text-color: #333333;  
+  --text-color-light: #2d2c2c;  
+
+  --font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+
+body {
+  font-family: var(--font-family);
+  color: var(--text-color);
+  margin: 0;
+  position: relative; /* 这个为了模糊背景需要保留 */
+  min-height: 100vh;
+
+  /* --- 重新加回这些用于居中的关键代码 --- */
+  display: flex;
+  justify-content: center; /* 水平居中 */
+  align-items: center;     /* 垂直居中 */
+}
+
+/* --- 新增：实现模糊背景的伪元素 --- */
+body::before {
+  content: '';
+  position: fixed; /* 固定定位，铺满整个屏幕 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  /* 把背景图应用到这个伪元素上 */
+  background-image: url('/background.jpg'); /* 确保图片在 public 文件夹下 */
+  background-size: cover;
+  background-position: center;
+
+  /* --- 实现模糊的关键 --- */
+  filter: blur(8px); /* 修改数值可以调整模糊程度，例如 5px, 10px */
+
+  /* 把它放到最底层，以免遮挡内容 */
+  z-index: -1; 
+}
+
+#app {
+  max-width: 1200px;
+  width: 100%;
+  padding: 2rem;
+}
+
+#app {
+  max-width: 1200px;
+  width: 100%;
+  padding: 2rem;
+}
+
+/* 磨砂玻璃效果的基类 */
+.glass-card {
+  /* 1. 用一个带透明度的深色背景替换掉原来的背景 */
+  background-color: rgba(222, 223, 225, 0.7); /* 深蓝灰色，70%不透明度，你可以修改为你喜欢的颜色和透明度 */
+  
+  /* 2. 移除或注释掉 backdrop-filter，这是实现磨砂玻璃效果的核心 */
+  /* backdrop-filter: blur(10px); */
+  /* -webkit-backdrop-filter: blur(10px); */
+
+  /* 3. 保留圆角 */
+  border-radius: 15px;
+  
+  /* 4. 可以移除或保留边框，纯色背景下边框效果不明显 */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  
+  /* 5. 保留或调整阴影 */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  
+  padding: 1.5rem;
+}
+
+h1, h2, h3 {
+  margin: 0;
+  font-weight: 500;
+}
